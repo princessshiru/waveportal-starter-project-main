@@ -2,34 +2,53 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 64px;
+  /* background-color: #faf8f8; */
+   margin-top: 120px;
+ /* margin-bottom: 64px;
+  margin-left: 64px;
+  margin-right: 64px; */
 }
 
 .dataContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: saddlebrown;
-  max-width: 600px;
+  color: rgb(106, 20, 20);
+ background-color:  #f5faf5;
+  /*  max-width: 600px;
+  max-height: 1000px; */
 }
 
 .header {
-  text-align: center;
+  /* text-align: center; */
   font-size: 32px;
   font-weight: 600;
 }
 
 .bio {
-  text-align: center;
-  color: blue;
+  /* text-align: center; */
+  color: rgb(106, 20, 20);;
   margin-top: 16px;
 }
 
-.waveButton {
+.fruittypesButton {
   cursor: pointer;
   margin-top: 16px;
   padding: 8px;
   border: 0;
   border-radius: 5px;
+  max-width: 200px;
+  color: white;
+  font-weight: bold;
+  background-color: green;
   
+}
+ul {
+  list-style: none;
+}
+
+ul li {
+  padding: 5px;
+  background: #f4f4f4;
+  margin: 5px 0;
 }
