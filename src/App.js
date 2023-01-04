@@ -35,7 +35,7 @@ const findMetaMaskAccount = async () => {
 };
 const App = () => { 
   const [currentAccount, setCurrentAccount] = useState("");
-  const contractAddress = "0xCFB9118bb65eb925E0111bdf7803DC745007B5d9";
+  const contractAddress = "0xF8dEEA84109CD0DB814Ccb522Ee3f9FC86f3b98C";
   const [allFruits, setAllFruits] = useState([]);
  /**
    * Create a variable here that references the abi content in the Fruit_Types.json
@@ -70,12 +70,17 @@ const App = () => {
         const signer = provider.getSigner();
         const ul = document.querySelector('.items');
         const fruitsPortalContract = new ethers.Contract(contractAddress, contractABI, signer);
-        var fruitnameprompt = prompt(`Enter the name of the fruit enjoy eating `);
+        var fruitnameprompt = document.getElementById('fruit1name').value;
+       
+       // throw new Error("nimefika mapema ndio best"); // a way to die during debug MK
 
         let count = await fruitsPortalContract.getTotalFruitTypes();
         console.log("Retrieved total fruit types count...", count.toNumber());
 
-        const fruitTxn = await fruitsPortalContract.fruittypes(fruitnameprompt);
+        let listfruits = await fruitsPortalContract.getAllFruits();
+        console.log("Retrieved fruit list ...", listfruits);
+
+        const fruitTxn = await fruitsPortalContract.fruittypes(fruitnameprompt, { gasLimit: 300000 });
         console.log("Mining...", fruitTxn.hash);
         ul.firstElementChild.textContent = `Mining...${fruitTxn.hash} .... for fruit ${fruitnameprompt}`;
 
@@ -86,7 +91,7 @@ const App = () => {
 
         count = await fruitsPortalContract.getTotalFruitTypes();
         console.log("Retrieved total fruit count...", count.toNumber());
-        ul.lastElementChild.innerHTML = `Retrieved total fruit count....${count.toNumber()} `;
+        ul.lastElementChild.innerHTML = `Retrieved total fruit count....${count.toNumber()} they include ${listfruits} `;
 
 
         // ul.children[1].innerText = 'Brad';
@@ -98,17 +103,8 @@ const App = () => {
       console.log(error);
     }
 }
-  // const fruittypes = () => {
-    
-  // }
 
-  useEffect(async () => {
-    const account = await findMetaMaskAccount();
-    if (account !== null) {
-      setCurrentAccount(account);
-    }
-  }, []);
-
+  
   /*
    * Create a method that gets all waves from your contract
    */
@@ -151,21 +147,30 @@ const App = () => {
     }
   }
 
+  useEffect(() => {
+    //findMetaMaskAccount();
+    connectWallet();
+    //getAllFruits();
+  }, []);
+
+
   
   return (
     <div className="mainContainer">
 
       <div className="dataContainer">
         <div className="header">
-        👋 Hey there!
+        Lets track 〽️ fruits 🍑🥝🍓🥭 by popularity! 📈
         </div>
 
         <div className="bio">
-
-        I am Maureen, glad to blockchain meet you! I love fruits, connect your Ethereum wallet and tell me which fruit types  you love!
         <br></br>
-        Simply click the button and enter the name in the prompt
-
+        Enter the name of your favourite fruit followed by its emoji, eg Kiwi 🥝.
+        <br></br>
+        </div>
+        <div>
+          <label htmlFor="fruit1name">Fruit Name:</label>
+          <input type="text" id="fruit1name" name="fruit1name"></input>
         </div>
         <br></br>
         <button className="fruittypesButton" onClick={fruittypes}>
@@ -190,10 +195,10 @@ const App = () => {
             </div>)
         })}
 
-      <ul class="items">
-        <li class="item">TXN mining in progress will be shown here</li>
-        <li class="item">TXN mined status will show here ... this one takes a few more seconds please be patient.</li>
-        <li class="item"> Fruit Types count will show here</li>
+      <ul className="items">
+        <li className="item"></li>
+        <li className="item"></li>
+        <li className="item"></li>
       </ul>
 
       </div>
