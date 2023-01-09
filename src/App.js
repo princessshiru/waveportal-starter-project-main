@@ -147,9 +147,9 @@ const App = () => {
   }
 
   useEffect(() => {
-    //findMetaMaskAccount();
+    
     connectWallet();
-    //getAllFruits();
+   
   }, []);
 
 
