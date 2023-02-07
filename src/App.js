@@ -72,8 +72,7 @@ const App = () => {
         const fruitsPortalContract = new ethers.Contract(contractAddress, contractABI, signer);
         var fruitnameprompt = document.getElementById('fruit1name').value;
        
-       // throw new Error("nimefika mapema ndio best"); // a way to die during debug MK
-
+       
         let count = await fruitsPortalContract.getTotalFruitTypes();
         console.log("Retrieved total fruit types count...", count.toNumber());
 
@@ -148,9 +147,9 @@ const App = () => {
   }
 
   useEffect(() => {
-    //findMetaMaskAccount();
+    
     connectWallet();
-    //getAllFruits();
+   
   }, []);
 
 
@@ -181,7 +180,8 @@ const App = () => {
          * If there is no currentAccount render this button
          */}
         {!currentAccount && (
-          <button className="waveButton" onClick={connectWallet}>
+          
+          <button className="connectwalletbutton" onClick={connectWallet}>
             Connect Wallet
           </button>
         )}

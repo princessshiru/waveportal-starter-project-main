@@ -43,6 +43,20 @@
   background-color: green;
   
 }
+
+.connectwalletbutton {
+  cursor: pointer;
+  margin-top: 16px;
+  padding: 8px;
+  border: 0;
+  border-radius: 5px;
+  max-width: 200px;
+  color: white;
+  font-weight: bold;
+  background-color: green;
+  
+}
+
 ul {
   list-style: none;
 }
