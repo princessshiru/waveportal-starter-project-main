@@ -90,7 +90,7 @@ const App = () => {
 
         count = await fruitsPortalContract.getTotalFruitTypes();
         console.log("Retrieved total fruit count...", count.toNumber());
-        ul.lastElementChild.innerHTML = `Retrieved total fruit count....${count.toNumber()} they include ${listfruits} `;
+        ul.lastElementChild.innerHTML = `Retrieved total fruit count....${count.toNumber()} they include ${listfruits(1)} `; // list of fruits they include ${listfruits}
 
 
         // ul.children[1].innerText = 'Brad';
@@ -159,14 +159,15 @@ const App = () => {
 
       <div className="dataContainer">
         <div className="header">
-        Lets track 〽️ fruits 🍑🥝🍓🥭 by popularity! 📈
+        Tell me the name of your favourite fruit 🍑🥝🍓🥭 
         </div>
 
         <div className="bio">
         <br></br>
-        Enter the name of your favourite fruit followed by its emoji, eg Kiwi 🥝.
-        <br></br>
+        Enter a fruit name eg Kiwi and stand a chance to win 0.002 fake test ETH! 
+        
         </div>
+        <br></br>
         <div>
           <label htmlFor="fruit1name">Fruit Name:</label>
           <input type="text" id="fruit1name" name="fruit1name"></input>
